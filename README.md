@@ -74,6 +74,25 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![React][React.js]][React-url]
 * [![Vite][Vite.js]][Vite-url]
 
+Configuration steps:
+
+1. TailwindCSS
+
+  ```bash
+  bun add tailwindcss@latest postcss@latest autoprefixer@latest
+  bunx tailwind init # not sure
+  bun run tailwindcss init -p # not sure
+  ```
+
+2. Storybook
+
+  ```bash
+  bun add classnames
+  bun add storybook@latest
+  bun add storybook@latest add @storybook/addon-styling-webpack # only for webpack
+  bunx sb init --type react
+  ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
