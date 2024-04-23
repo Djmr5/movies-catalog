@@ -1,0 +1,19 @@
+.section-header {
+    @apply flex justify-between items-center;
+}
+
+.section-title {
+    @apply text-3xl font-medium uppercase px-10 py-5;
+}
+
+.movie-list {
+    @apply flex overflow-x-auto;
+    /* Hide scrollbar */
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+}
+
+.movie-list::-webkit-scrollbar {
+    /* Hide scrollbar */
+    display: none; /* for Chrome, Safari, and Opera */
+}
