@@ -1,0 +1,23 @@
+.movie-card {
+    @apply w-64 min-w-64 h-96 rounded-lg overflow-hidden m-2 bg-black relative flex flex-col justify-end;
+};
+
+.movie-card__img {
+    @apply w-full h-full object-cover transform transition-[transform,opacity] duration-1000 hover:scale-125 hover:opacity-60 z-0;
+};
+
+.info-show {
+    @apply absolute w-full h-fit text-white -bottom-0;
+};
+
+.movie-card__details {
+    @apply p-4 bg-gradient-to-t from-black/100 w-full h-fit flex-col space-y-2 z-10;
+}
+
+.movie-title {
+    @apply text-xl font-bold leading-5;
+};
+
+.movie-vote {
+    @apply flex items-center mt-2;
+};
