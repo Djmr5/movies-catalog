@@ -1,0 +1,11 @@
+.movies-carousel {
+    @apply flex overflow-x-auto;
+    /* Hide scrollbar */
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+}
+
+.movies-carousel::-webkit-scrollbar {
+    /* Hide scrollbar */
+    display: none; /* for Chrome, Safari, and Opera */
+}

@@ -1,0 +1,1 @@
+export { default as MoviesCarousel } from './MoviesCarousel';

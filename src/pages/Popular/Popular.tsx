@@ -13,6 +13,7 @@ const Popular: React.FC = () => {
       .then(res => {
         if (res && res.results)
         setMovies(res.results);
+      console.log(res.results);
       }).catch(error => {
         setError(error);
       });
@@ -28,15 +29,8 @@ const Popular: React.FC = () => {
       {loading && <p>Loading...</p>}
       {error && <p>An error has ocurred...</p>}
       {movies.length > 0 &&
-        movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movieId={movie.id}
-            title={movie.title}
-            genreId={movie.genre_ids[0]}
-            voteAverage={movie.vote_average}
-            posterPath={movie.poster_path}
-          />
+        movies.map((movie, index) => (
+          <MovieCard key={index} {...movie} />
         ))
       }
     </>

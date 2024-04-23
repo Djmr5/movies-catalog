@@ -1,20 +1,26 @@
 import './NavButton.css';
-import { IButton } from './types';
+import { INavButton } from './types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-const Button: React.FC<IButton> = ({ text, color, link }) => {
+const Button: React.FC<INavButton> = ({ text, color, link }) => {
 
     const buttonStyle = classNames('button', `bg-${color}-600`);
 
     return (
         <Link className={buttonStyle} to={link}>
-            {text}
-            <svg className='h-3' fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 330 330" xmlSpace="preserve">
-                <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
-                c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
-                s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
+            <span className='px-1'>
+                {text}
+            </span>
+            <svg className='h-3' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor"
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569
+                    0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224
+                    284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667
+                    22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373
+                    9.372-24.569 9.372-33.942 0z"
+                >
+                </path>
             </svg>
         </Link>
     )

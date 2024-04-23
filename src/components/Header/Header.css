@@ -1,0 +1,23 @@
+.navbar {
+    @apply flex flex-row justify-between border-b-2 border-gray-300 h-20;
+}
+
+#logo {
+    @apply text-2xl text-gray-600 font-bold my-5 mx-5
+}
+
+#routes {
+    @apply flex h-full;
+}
+
+.route {
+    @apply h-full;
+}
+
+.route__link  {
+    @apply flex items-center text-sm font-medium uppercase px-4 h-full hover:bg-slate-100;
+}
+
+.route__link.active {
+    @apply text-red-600;
+}

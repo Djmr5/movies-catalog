@@ -1,4 +1,4 @@
-export interface IButton {
+export interface INavButton {
     /**
      * The text of the button.
      */
