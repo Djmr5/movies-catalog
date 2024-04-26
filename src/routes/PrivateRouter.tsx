@@ -6,7 +6,9 @@ const PrivateRouter: React.FC = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="p-2 bg-gray-100">
+        <Outlet />
+      </div>
     </>
   );
 };
