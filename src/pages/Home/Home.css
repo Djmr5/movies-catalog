@@ -1,9 +1,9 @@
 .section-header {
-    @apply flex justify-between items-center;
+    @apply flex justify-between items-center pr-2;
 }
 
 .section-title {
-    @apply text-3xl font-medium uppercase px-10 py-5;
+    @apply text-3xl font-medium uppercase pl-10 py-5;
 }
 
 .movie-list {

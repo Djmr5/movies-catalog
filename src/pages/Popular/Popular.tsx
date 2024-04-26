@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPopularMovies } from "../../services";
-import { MovieCard } from "../../components";
+import { MoviesCarousel } from "../../components";
 import { IMovieResponse } from "../../services/movies/types";
 
 const Popular: React.FC = () => {
@@ -13,7 +13,6 @@ const Popular: React.FC = () => {
       .then(res => {
         if (res && res.results)
         setMovies(res.results);
-      console.log(res.results);
       }).catch(error => {
         setError(error);
       });
@@ -29,9 +28,7 @@ const Popular: React.FC = () => {
       {loading && <p>Loading...</p>}
       {error && <p>An error has ocurred...</p>}
       {movies.length > 0 &&
-        movies.map((movie, index) => (
-          <MovieCard key={index} {...movie} />
-        ))
+        <MoviesCarousel movies={movies} />
       }
     </>
   );

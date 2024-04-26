@@ -2,9 +2,9 @@ import httpInstance from "../httpInstance";
 import { ITMDBResponse } from "../types";
 import { IMovieResponse } from "./types";
 
-const getPopularMovies = async () => {
+const getTopRatedMovies = async () => {
     let res;
-    const endpoint = `/popular?api_key=${import.meta.env.VITE_MOVIES_API_KEY}&language=en-US`;
+    const endpoint = `/top_rated?api_key=${import.meta.env.VITE_MOVIES_API_KEY}&language=en-US`;
     await httpInstance.get(endpoint)
         .then(response => {
             res = response.data;
@@ -15,4 +15,4 @@ const getPopularMovies = async () => {
     return res || {} as ITMDBResponse<IMovieResponse>;
 }
 
-export default getPopularMovies;
+export default getTopRatedMovies;

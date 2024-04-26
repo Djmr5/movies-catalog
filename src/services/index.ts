@@ -1,1 +1,3 @@
-export { getPopularMovies } from "./movies/getPopularMovies";
+export { getPopularMovies } from "./movies";
+export { getTopRatedMovies } from "./movies";
+export { getNowPlayingMovies } from "./movies";
