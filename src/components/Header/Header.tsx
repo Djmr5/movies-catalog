@@ -1,13 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { ROUTES } from "../../routes/constants";
 import './Header.css';
 
 const Header: React.FC = () => {
   return (
     <nav className="navbar">
-      <h2 id="logo">
+      <Link to={ROUTES.HOME} id="logo">
         Movies DB
-      </h2>
+      </Link>
       <ul id="routes">
         <li className="route">
           <NavLink className="route__link" to={ROUTES.HOME}>Home</NavLink>
