@@ -15,7 +15,6 @@ const meta = {
     },
     argTypes: {
         id: { control: 'number' },
-        isFav: { control: 'boolean' },
     },
     tags: ["autodocs"]
 } as Meta;
@@ -27,5 +26,4 @@ const Template: StoryFn<IFavButton> = (args) => <FavButton {...args} />;
 export const NotFavorite = Template.bind({});
 NotFavorite.args = {
     id: 1,
-    isFav: false,
 };
