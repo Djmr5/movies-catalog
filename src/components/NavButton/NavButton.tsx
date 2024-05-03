@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Button: React.FC<INavButton> = ({ text, color, link }) => {
 
-    const buttonStyle = classNames('button', `bg-${color}-600`);
+    const buttonStyle = classNames('nav-button', `bg-${color}-600`);
 
     return (
         <Link className={buttonStyle} to={link}>

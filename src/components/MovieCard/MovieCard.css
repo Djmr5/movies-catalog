@@ -1,5 +1,5 @@
 .movie-card {
-    @apply w-64 min-w-64 h-96 rounded-lg overflow-hidden m-2 bg-black relative flex flex-col justify-end;
+    @apply w-64 min-w-64 h-96 rounded-lg overflow-hidden m-2 bg-black relative flex flex-col justify-end hover:cursor-pointer;
 };
 
 .movie-card__img {

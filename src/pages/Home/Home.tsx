@@ -5,7 +5,7 @@ import { IMovieResponse } from "../../services/movies/types";
 import { getPopularMovies, getTopRatedMovies, getNowPlayingMovies } from "../../services";
 import { ROUTES } from "../../routes/constants";
 
-const Home = () => {
+const Home:React.FC = () => {
   const [popularMovies, setPopularMovies] = useState<Array<IMovieResponse>>([]);
   const [topRatedMovies, setTopRatedMovies] = useState<Array<IMovieResponse>>([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState<Array<IMovieResponse>>([]);

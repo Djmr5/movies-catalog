@@ -1,0 +1,19 @@
+.button {
+    @apply flex place-items-center rounded-md text-white w-fit px-4 py-2;
+};
+
+.button > * {
+    @apply mr-2;
+};
+
+.button--inactive {
+    @apply bg-sky-600 hover:bg-sky-700 border-2 border-gray-800 
+    border-t-sky-600 border-l-sky-600 hover:border-t-sky-700 hover:border-l-sky-700
+    active:border-b-sky-700 active:border-r-sky-700 active:border-t-gray-800 active:border-l-gray-800;
+};
+
+.button--active {
+    @apply bg-green-600 hover:bg-green-700 border-2 border-gray-800
+    border-t-green-600 border-l-green-600 hover:border-t-green-700 hover:border-l-green-700
+    active:border-b-green-700 active:border-r-green-700 active:border-t-gray-800 active:border-l-gray-800;
+};

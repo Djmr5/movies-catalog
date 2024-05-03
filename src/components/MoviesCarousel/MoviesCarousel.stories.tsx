@@ -2,10 +2,12 @@ import { Meta, StoryFn } from '@storybook/react';
 import { IMoviesCarousel } from './types';
 import MoviesCarousel from './MoviesCarousel';
 import { movies } from '../../constants/moviesMock';
+import { withRouter } from 'storybook-addon-remix-react-router';
 
 const meta = {
     title: 'Components/MoviesCarousel',
     component: MoviesCarousel,
+    decorators: [withRouter],
     parameters: {
         docs: {
             description: {

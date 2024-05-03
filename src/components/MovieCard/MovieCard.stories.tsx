@@ -1,10 +1,12 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { IMovieCard } from './types';
 import MovieCard from './MovieCard';
+import { withRouter } from 'storybook-addon-remix-react-router';
 
 const meta = {
     title: 'Components/MovieCard',
     component: MovieCard,
+    decorators: [withRouter],
     parameters: {
         layout: 'centered',
         docs: {
@@ -15,9 +17,9 @@ const meta = {
     },
     argTypes: {
         title: { control: 'text' },
-        genre_ids: { control: 'array' },
+        genre_ids: { control: 'object' },
         id: { control: 'number' },
-        vote_verage: { control: 'number' },
+        vote_average: { control: 'number' },
         poster_path: { control: 'text' },
     },
     tags: ["autodocs"]

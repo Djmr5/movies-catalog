@@ -1,8 +1,10 @@
-import { IMAGE_SOURCE } from "../../constants/moviesMock"
+import Config from "../../config"
 import { IMovieCard } from "./types"
 import './MovieCard.css'
 import genres from "../../constants/genres.json"
 import { Pill } from ".."
+import { useNavigate } from "react-router-dom"
+import { ROUTES } from "../../routes/constants"
 
 /**
  * A default moviecard poster that displays the movie title, genre, vote average, and poster path.
@@ -19,15 +21,19 @@ const MovieCard: React.FC<IMovieCard> = ({
   vote_average,
 }) => {
 
-  const poster = IMAGE_SOURCE + poster_path;
+  const navigate = useNavigate();
+  const poster = Config.IMAGE_SOURCE + poster_path;
 
   const getGenre = (genreId: number): string => {
     return genres.genres.find((genre: { id: number }) => genre.id === genreId)?.name || '';
   }
 
+  const navigateMovies = (id: number, movieName: string) => {
+    navigate(`${ROUTES.MOVIE}${id}`, { state: { movieName } });
+  }
 
   return (
-    <div className="movie-card" key={id}>
+    <div className="movie-card" key={id} onClick={() => navigateMovies(id, title)}>
 
       <div className="movie-card__img">
         <img src={poster} alt={title} />

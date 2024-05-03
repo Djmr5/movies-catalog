@@ -1,0 +1,15 @@
+.fav-button {
+    @apply flex items-center rounded-md text-white font-bold w-fit px-3 py-2;
+};
+
+.fav-button--inactive {
+    @apply bg-sky-600 hover:bg-sky-700 border-2 border-gray-800 
+    border-t-sky-600 border-l-sky-600 hover:border-t-sky-700 hover:border-l-sky-700
+    active:border-b-sky-700 active:border-r-sky-700 active:border-t-gray-800 active:border-l-gray-800;
+};
+
+.fav-button--active {
+    @apply bg-red-600 hover:bg-red-700 border-2 border-gray-800
+    border-t-red-600 border-l-red-600 hover:border-t-red-700 hover:border-l-red-700
+    active:border-b-red-700 active:border-r-red-700 active:border-t-gray-800 active:border-l-gray-800;
+};
