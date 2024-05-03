@@ -1,21 +1,29 @@
-.navbar {
-    @apply flex flex-row justify-between border-b-2 border-gray-300 h-20;
+#navbar {
+    @apply flex flex-col justify-between border-b-2 border-gray-300 md:flex-row;
+}
+
+#navbar__logo-hamburguer {
+    @apply py-5 flex justify-between w-full md:w-auto border-b-2 border-b-gray-300 md:border-b-0;
 }
 
 #logo {
-    @apply text-2xl text-gray-600 font-bold my-5 mx-5
+    @apply self-center text-2xl text-gray-600 font-bold ml-5;
 }
 
-#routes {
-    @apply flex h-full;
+#hamburguer {
+    @apply mr-5 self-center border-2 p-2 h-10 rounded-md md:hidden
+    transition-colors duration-500
+    bg-red-500 border-t-red-500 border-l-red-500 border-b-red-700 border-r-red-700
+    hover:bg-red-700 hover:border-b-red-950 hover:border-r-red-950 hover:border-t-red-800 hover:border-l-red-800
+    active:bg-red-700 active:border-b-red-800 active:border-r-red-800 active:border-t-black active:border-l-black active:duration-0;
 }
 
-.route {
-    @apply h-full;
+.routes {
+    @apply px-5 flex flex-wrap justify-between space-x-2 self-center;
 }
 
 .route__link  {
-    @apply flex items-center text-sm font-medium uppercase px-4 h-full hover:bg-slate-100;
+    @apply h-20 py-3 flex items-center text-sm font-medium uppercase px-4 hover:bg-slate-100;
 }
 
 .route__link.active {
