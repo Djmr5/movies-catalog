@@ -4,68 +4,44 @@ import { MovieCard, Button } from "../../components";
 import { IMovieResponse } from "../../services/movies/types";
 
 const Popular: React.FC = () => {
-  const [movies, setMovies] = useState<Array<IMovieResponse>>([]);
-  const [isSortedByName, setSelectedSortByName] = useState<boolean>(false);
-  const [isSortedByRating, setSelectedSortByRating] = useState<boolean>(false);
+  const [movies, setMovies] = useState<IMovieResponse[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const sortByTitle = () => {
-    if (isSortedByName) {
-      setSelectedSortByName(false);
-      setMovies(sortBy({ movies, key: 'popularity' }));
-      return;
-    }
-    else if (isSortedByRating) {
-      setSelectedSortByRating(false);
-      setSelectedSortByName(true);
-    }
-    setSelectedSortByName(true);
-    setMovies(sortBy({ movies, key: 'title' }));
-  }
-
-  const sortByVoteAverage = () => {
-    if (isSortedByRating) {
-      setSelectedSortByRating(false);
-      setMovies(sortBy({ movies, key: 'popularity' }));
-      return;
-    }
-    else if (isSortedByName) {
-      setSelectedSortByName(false);
-      setSelectedSortByRating(true);
-    }
-    setSelectedSortByRating(true);
-    setMovies(sortBy({ movies, key: 'vote_average' }));
-  }
+  const [error, setError] = useState<boolean>(false);
+  const [sortByType, setSortByType] = useState<string | null>(null);
 
   const getPopular = async () => {
-    await getPopularMovies()
-      .then(res => {
-        if (res && res.results)
-          setMovies(res.results);
-      }).catch(error => {
-        setError(error);
-      });
+    try {
+      const res = await getPopularMovies();
+      if (res && res.results) setMovies(res.results);
+    } catch (error) {
+      setError(true);
+    }
     setLoading(false);
-  }
+  };
 
   useEffect(() => {
     getPopular();
   }, []);
 
+  const sortByKey = (key: "id" | "title" | "popularity" | "vote_average") => {
+    if (sortByType === key) {
+      setMovies(sortBy({ movies, key: 'popularity' }));
+      return setSortByType(null);
+    }
+    setMovies(sortBy({ movies, key }));
+    setSortByType(key === sortByType ? null : key);
+  };
+
   return (
     <>
       {loading && <p>Loading...</p>}
-      {error && <p>An error has ocurred...</p>}
-      {movies.length > 0 &&
+      {error && <p>An error has occurred...</p>}
+      {movies.length > 0 && (
         <>
           <div id="section-header" className="m-2 flex justify-between">
             <h2 className="m-6 text-3xl font-medium">POPULAR</h2>
             <div className="m-6 flex space-x-5">
-              <Button
-                onClick={sortByTitle}
-                isActive={isSortedByName}
-              >
+              <Button onClick={() => sortByKey("title")} isActive={sortByType === "title"}>
                 <svg className="h-5" aria-hidden="true" focusable="false" data-prefix="fas"
                   data-icon="sort-alpha-down" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -84,8 +60,8 @@ const Popular: React.FC = () => {
                 Sort by Name
               </Button>
               <Button
-                onClick={sortByVoteAverage}
-                isActive={isSortedByRating}
+                onClick={() => sortByKey("vote_average")}
+                isActive={sortByType === "vote_average"}
               >
                 <svg className="h-5" aria-hidden="true" focusable="false" data-prefix="fas"
                   data-icon="sort-numeric-down-alt" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -106,14 +82,14 @@ const Popular: React.FC = () => {
             </div>
           </div>
           <ul className="flex flex-wrap w-full">
-            {movies.map((movie) =>
+            {movies.map((movie) => (
               <li key={movie.id} className="flex-grow">
                 <MovieCard {...movie} />
               </li>
-            )}
+            ))}
           </ul>
         </>
-      }
+      )}
     </>
   );
 };
