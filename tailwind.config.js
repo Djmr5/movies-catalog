@@ -2,7 +2,11 @@
 export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'show': '850px',
+      },
+    },
   },
   plugins: [],
   safelist: [

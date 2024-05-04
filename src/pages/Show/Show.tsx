@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IMovieDetailsResponse, IMovieResponse } from "../../services/movies/types";
 import { getMovieById, getRecomByMovieId } from "../../services";
 import './Show.css'
-import { FavButton, MoviesCarousel, Pill } from "../../components";
+import { Button, FavButton, MoviesCarousel, Pill } from "../../components";
 
 const Show: React.FC = () => {
   const navigate = useNavigate();
@@ -48,18 +48,19 @@ const Show: React.FC = () => {
       {error && <p>An error has ocurred...</p>}
       {movieData &&
         <>
-          <div id="movie" className="flex flex-row">
+          <div id="movie" className="flex flex-col sm:flex-row">
             <img id="poster"
+              className="self-center"
               src={Config.IMAGE_SOURCE + movieData?.poster_path}
               alt={movieData.title}
             />
-            <div className="p-8 flex flex-col w-full space-y-8">
-              <div id="title-and-go-back" className="flex w-full justify-between">
+            <div className="p-8 flex flex-col space-y-8 w-fit">
+              <div id="title-and-go-back" className="flex justify-between">
                 <h1 className="text-4xl uppercase font-bold">{movieData.title}</h1>
-                <button className="px-2 rounded-lg border-2 border-gray-500 hover:bg-slate-200" onClick={() => goBack()}>Ir atrás</button>
+                <Button onClick={goBack} isActive={false}>Regresar</Button>
               </div>
-              <div id="movie-info" className="flex space-x-3 font-medium">
-                <div id="adult-category" className="flex">
+              <div id="movie-info" className="flex flex-wrap font-medium">
+                <div id="adult-category" className="flex mx-2">
                   <svg className="w-7 px-1" aria-hidden="true" focusable="false" data-prefix="fas"
                     data-icon="users" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                     <path fill="currentColor"
@@ -76,7 +77,7 @@ const Show: React.FC = () => {
                   </svg>
                   18{movieData.adult ? "+" : "-"}
                 </div>
-                <div id="duration" className="flex">
+                <div id="duration" className="flex mx-2">
                   <svg className="w-6 px-1" aria-hidden="true" focusable="false" data-prefix="fas"
                     data-icon="clock" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path fill="currentColor"
@@ -87,7 +88,7 @@ const Show: React.FC = () => {
                   </svg>
                   {movieData.runtime} min.
                 </div>
-                <div id="release-date" className="flex">
+                <div id="release-date" className="flex mx-2">
                   <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar-day"
                     className="w-6 px-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path fill="currentColor"
@@ -100,7 +101,7 @@ const Show: React.FC = () => {
                   </svg>
                   {movieData.release_date.split('-')[0]}
                 </div>
-                <div id="vote-average" className="flex">
+                <div id="vote-average" className="flex mx-2">
                   <svg className="w-6 px-1" aria-hidden="true" focusable="false" data-prefix="fas"
                     data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                     <path fill="currentColor"
@@ -111,7 +112,7 @@ const Show: React.FC = () => {
                   </svg>
                   {movieData.vote_average.toPrecision(2)}
                 </div>
-                <div id="vote-count" className="flex">
+                <div id="vote-count" className="flex mx-2">
                   <svg className="w-6 px-1" aria-hidden="true" focusable="false" data-prefix="fas"
                     data-icon="poll" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path fill="currentColor"
@@ -128,7 +129,7 @@ const Show: React.FC = () => {
               <div id="movie-description">
                 <p>{movieData.overview}</p>
               </div>
-              <div id="movie-more-info" className="flex w-full justify-between">
+              <div id="movie-more-info" className="flex flex-col show:flex-row justify-between space-y-4">
                 <div id="movie-genres" className="flex flex-col space-y-4">
                   <h3 className="font-bold text-xl">Genres</h3>
                   <ul className="flex space-x-2">
@@ -138,7 +139,7 @@ const Show: React.FC = () => {
                   </ul>
                 </div>
                 <div id="movie-favorite" className="flex flex-col space-y-3">
-                  <h3 className="font-bold text-xl text-right">Favorite</h3>
+                  <h3 className="font-bold text-xl show:text-right">Favorite</h3>
                   <FavButton id={movieData.id} />
                 </div>
               </div>

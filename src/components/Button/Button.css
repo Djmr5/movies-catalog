@@ -1,5 +1,5 @@
 .button {
-    @apply flex place-items-center rounded-md text-white w-fit px-4 py-2;
+    @apply flex place-items-center rounded-md text-white w-fit px-4 py-2 h-fit;
 };
 
 .button > * {
