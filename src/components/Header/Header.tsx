@@ -1,14 +1,26 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/constants";
 import './Header.css';
 import classNames from "classnames";
+import { useAppContext } from "../../store/app-context/useAppContext";
 
 const Header: React.FC = () => {
+  const { logOut } = useAppContext();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
+  }
+
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+      navigate(ROUTES.LOGIN);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const routesStyle = classNames({
@@ -40,6 +52,7 @@ const Header: React.FC = () => {
         <NavLink className="route__link" to={ROUTES.TOP_RATED}>Top rated</NavLink>
         <NavLink className="route__link" to={ROUTES.NOW_PLAYING}>Now playing</NavLink>
         <NavLink className="route__link" to={ROUTES.MY_FAVORITES}>My favorites</NavLink>
+        <button onClick={handleLogOut} className="route__link">Log out</button>
       </ul>
     </nav>
   );

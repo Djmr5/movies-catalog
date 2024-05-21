@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { IMovieResponse, convertToMovieResponse } from "../../services/movies/types";
-import { getMovieById, sortBy } from "../../services";
 import { Button, MovieCard } from "../../components";
+import { getMovieById, sortBy } from "../../services";
+import { IMovieResponse, convertToMovieResponse } from "../../services/movies/types";
+import { useAppContext } from "../../store/app-context/useAppContext";
 
 const MyFavorites: React.FC = () => {
+  const { user, setUser } = useAppContext();
   const [loading, setLoading] = useState<boolean>(true);
   const [favorites, setFavorites] = useState<Array<IMovieResponse>>([]);
   const localStorageFavorites = localStorage.getItem('favorites') || '';
@@ -27,7 +29,7 @@ const MyFavorites: React.FC = () => {
 
   useEffect(() => {
     getAllFavorites(localStorageFavorites);
-  }, [localStorageFavorites]);
+  }, [localStorageFavorites, setUser]);
 
   const sortByKey = (key: "id" | "title" | "popularity" | "vote_average") => {
     if (sortByType === key) {
@@ -41,6 +43,7 @@ const MyFavorites: React.FC = () => {
   return (
     <>
       {loading && <p>Loading...</p>}
+      {user && <h1 className="text-4xl m-6">Welcome, {user.displayName}!</h1>}
       {favorites && favorites.length ? (
         <>
           <div id="section-header" className="m-2 flex justify-between">
